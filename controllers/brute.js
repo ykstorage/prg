@@ -72,3 +72,49 @@ exports.exam = async function (req, res) {
     return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
   }
 };
+
+
+/**
+*  @swagger
+*  paths:
+*   /brute/rectangle:
+*     get:
+*       summary: 최소직사각형
+*       description: 최소직사각형
+*       tags: [brute (완전탐색)]
+*       responses:
+*         "200":
+*           description: OK
+*/
+exports.rectangle = async function (req, res) {  
+  const sizes = [[10, 7], [12, 3], [8, 15], [14, 7], [5, 15]];
+
+  function solution(sizes) {
+    try {
+      for(let i=0; i<sizes.length; i++){
+        if(sizes[i][1] > sizes[i][0]){
+          sizes[i].reverse();
+        }
+      }
+
+      const frontValues = sizes.map((el) => el[0]);
+      const backValues = sizes.map((el) => el[1]);
+      const frontMax = Math.max(...frontValues);
+      const backMax = Math.max(...backValues);
+      const size = frontMax * backMax;
+
+      return size;
+    } catch (error) {
+      console.log('error: ', error.message);
+      return false;
+    }
+  }
+
+  const result = solution(sizes);
+  
+  if(result){
+    return res.prg({result: result});
+  }else{
+    return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
+  }
+};

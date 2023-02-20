@@ -14,8 +14,8 @@ const { STATUS_CODE } = require('../lib/constants');
 *           description: OK
 */
 exports.k = async function (req, res) {  
-  let array = [1, 5, 2, 6, 3, 7, 4];
-  let commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]];
+  const array = [1, 5, 2, 6, 3, 7, 4];
+  const commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]];
 
   function solution(array, commands){
     try {

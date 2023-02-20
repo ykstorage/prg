@@ -14,7 +14,31 @@ const { STATUS_CODE } = require('../lib/constants');
 *           description: OK
 */
 exports.ponketmon = async function (req, res) {  
-  res.json({message: "POST 1 tea comment"});
+  const nums = [3, 1, 2, 3];
+  
+  function solution(nums) {
+    try {
+      const halfPonketmon = Math.floor(nums.length / 2);
+      const setPonketmon = new Set(nums).size;
+
+      if(halfPonketmon <= setPonketmon){
+        return halfPonketmon;
+      }else{
+        return setPonketmon;
+      }
+    } catch (error) {
+      console.log('error: ', error.message);
+      return false;
+    }
+  }
+
+  const result = solution(nums);
+  
+  if(result){
+    return res.prg({result: result});
+  }else{
+    return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
+  }
 };
 
 /**

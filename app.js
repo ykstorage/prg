@@ -5,10 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersHash = require('./routes/hash');
-var usersSort = require('./routes/sort');
-var usersBrute = require('./routes/brute');
-var usersGreedy = require('./routes/greedy');
+var routerHash = require('./routes/hash');
+var routerSort = require('./routes/sort');
+var routerBrute = require('./routes/brute');
+var routerGreedy = require('./routes/greedy');
+var routerStackq = require('./routes/stackq');
+var routerBinarySearch = require('./routes/binary-search');
+var routerDfsBfs = require('./routes/dfs-bfs');
+var routerDynamic = require('./routes/dynamic');
+var routerGraph = require('./routes/graph');
+var routerHeap = require('./routes/heap');
+
 
 var prg = require('./lib/prg');
 var swaggerJsdoc = require("swagger-jsdoc");
@@ -50,10 +57,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(prg.response_helper);
 
 app.use('/', indexRouter);
-app.use('/hash', usersHash); // 해시
-app.use('/sort', usersSort); // 정렬
-app.use('/brute', usersBrute); // 완전탐색
-app.use('/greedy', usersGreedy); // 탐욕법
+app.use('/hash', routerHash); // 해시
+app.use('/sort', routerSort); // 정렬
+app.use('/brute', routerBrute); // 완전탐색
+app.use('/greedy', routerGreedy); // 탐욕법
+app.use('/stackq', routerStackq); // 탐욕법
+app.use('/binary-search', routerBinarySearch); // 이분탐색
+app.use('/dfs-bfs', routerDfsBfs); // 깊이/너비 우선 탐색
+app.use('/dynamic', routerDynamic); // Dynamic Programming(동적계획법)
+app.use('/graph', routerGraph); // 그래프
+app.use('/heap', routerHeap); // Heap
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
