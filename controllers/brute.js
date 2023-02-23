@@ -6,7 +6,7 @@ const { STATUS_CODE } = require('../lib/constants');
 *  paths:
 *   /brute/exam:
 *     get:
-*       summary: 모의고사
+*       summary: 모의고사 (Level 1)
 *       description: 모의고사
 *       tags: [brute (완전탐색)]
 *       parameters:
@@ -79,7 +79,7 @@ exports.exam = async function (req, res) {
 *  paths:
 *   /brute/rectangle:
 *     get:
-*       summary: 최소직사각형
+*       summary: 최소직사각형 (Level 1)
 *       description: 최소직사각형
 *       tags: [brute (완전탐색)]
 *       responses:

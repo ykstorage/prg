@@ -6,7 +6,7 @@ const { STATUS_CODE } = require('../lib/constants');
 *  paths:
 *   /sort/k:
 *     get:
-*       summary: k번째수
+*       summary: k번째수 (Level 1)
 *       description: k번째수
 *       tags: [sort (정렬)]
 *       responses:

@@ -6,7 +6,7 @@ const { STATUS_CODE } = require('../lib/constants');
 *  paths:
 *   /greedy/jursey:
 *     get:
-*       summary: 체육복
+*       summary: 체육복 (Level 1)
 *       description: 체육복
 *       tags: [greedy (탐욕법)]
 *       responses:
