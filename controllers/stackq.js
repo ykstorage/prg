@@ -197,3 +197,54 @@ exports.printer = async function (req, res) {
     return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
   }
 };
+
+/**
+*  @swagger
+*  paths:
+*   /stackq/truck:
+*     get:
+*       summary: 다리를 지나는 트럭 (Level 2)
+*       description: 다리를 지나는 트럭
+*       tags: [stack & queue (스택 & 큐)]
+*       responses:
+*         "200":
+*           description: OK
+*/
+exports.truck = async function (req, res) {  
+  const bridge_length = 2;
+  const weight = 10;
+  const truck_weights = [7,4,5,6];
+
+  function solution(bridge_length, weight, truck_weights){
+    try {
+      let order = 0; // 출력 순서
+      let priorityMap = priorities.map((v, i) => ({priority: v, index: i}));
+
+      while(true){
+        let firstValue = priorityMap.shift(); // 현재 가장 앞에 있는 값
+
+        if(priorityMap.some(m => m.priority > firstValue.priority)){
+          priorityMap.push(firstValue);
+        }else{ // 뒤에 더 큰값 없으면 출력
+          order += 1; // 출력할때마다 순서 +1
+          if(firstValue.index === location){ // 내가 원하는 문서라면 while문 종료
+            break;
+          }
+        }
+      }
+
+      return order;
+    } catch (error) {
+      console.log('error: ', error.message);
+      return false;
+    }
+  }
+
+  const result = solution(bridge_length, weight, truck_weights);
+  
+  if(result){
+    return res.prg({result: result});
+  }else{
+    return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
+  }
+};

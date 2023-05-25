@@ -15,6 +15,7 @@ var routerDfsBfs = require('./routes/dfs-bfs');
 var routerDynamic = require('./routes/dynamic');
 var routerGraph = require('./routes/graph');
 var routerHeap = require('./routes/heap');
+var routerCodingTest = require('./routes/coding-test');
 
 
 var prg = require('./lib/prg');
@@ -67,6 +68,7 @@ app.use('/dfs-bfs', routerDfsBfs); // 깊이/너비 우선 탐색
 app.use('/dynamic', routerDynamic); // Dynamic Programming(동적계획법)
 app.use('/graph', routerGraph); // 그래프
 app.use('/heap', routerHeap); // Heap
+app.use('/coding-test', routerCodingTest); // 코딩테스트
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
