@@ -22,11 +22,12 @@ exports.transformString = async function (req, res) {
     let newArr = [];
     let newInterval = 1;
     let tempJ = 0;
-    
+    let tempArr = [];
+
     // TODO: while 문 조건 범위를 더 좁혀야함
     while(newInterval < line1Arr.length){
       for (let i = 0; i < line1Arr.length; i++) {
-        let tempArr = [];
+        tempArr = [];
         
         // TODO: for 문 조건 범위를 더 좁혀야함
         for(let j = tempJ; j < line1Arr.length; j = j + newInterval){
@@ -69,7 +70,7 @@ exports.transformString = async function (req, res) {
 
   const result = solution(line1, line2);
 
-  if(result){
+  if(result || result === 0){
     return res.prg({result: result});
   }else{
     return res.prg('오류가 발생 했습니다.', STATUS_CODE.FAILED);
